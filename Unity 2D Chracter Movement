@@ -1,0 +1,21 @@
+using UnityEngine;
+
+public class CharacterMovement : MonoBehaviour
+{
+    public float speed = 5f; // karakter hızı
+    private Rigidbody2D rb; // karakterin fiziksel özelliklerini kontrol etmek için Rigidbody kullanacağız
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void FixedUpdate()
+    {
+        float moveHorizontal = Input.GetAxis("Horizontal"); // yatay eksen hareketi
+        float moveVertical = Input.GetAxis("Vertical"); // dikey eksen hareketi
+
+        Vector2 movement = new Vector2(moveHorizontal, moveVertical);
+        rb.AddForce(movement * speed);
+    }
+}
